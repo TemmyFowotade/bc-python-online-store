@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<p>Welcome {{ request.email }}</p>
+<p>Your public profile is: {{ request.form.url }}</p>
+
+<p><a href="/login">Add Product</a></p>
+<p><a href="/login">View Orders</a></p>
+<p><a href="/login">View Settings</a></p>
+{% endblock %}

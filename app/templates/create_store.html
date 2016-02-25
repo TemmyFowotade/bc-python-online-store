@@ -5,25 +5,27 @@
       <br>
       <form action ="/signup" method = "post"> 
         <label>Store Name</label>
-        <input type="text" placeholder="Storename" name="storename" value="{{ request.form.storename }}">
+        <p>{{ form.storename(placeholder="e.g Hope Ventures") }}</p>
 
         <label>Store URL</label>
-        <input type="text" placeholder="Storeurl" name="storeurl" value="{{ request.form.storeurl }}">
+        <p>{{ form.storeurl(placeholder="") }}</p>
+
 
         <label>Store Description</label>
-        <input type="text" placeholder="Storedescription" name="Storedescription" value="{{ request.form.storedescription }}">
+        <p>{{ form.description(placeholder="e.g We sell luxury clothes.") }}</p>
+
 
         <label>Email to notify when order placed</label>
-        <input type="email" placeholder="Email" name="store email" value="{{ request.form.email }}">
+        <p>{{ form.description(placeholder="email.") }}</p>
 
         <label>Address</label>
-        <input type="text" placeholder="Storeaddress" name="storeaddress" value="{{ request.form.storeaddress }}">
+        <p>{{ form.storeaddress(placeholder="e.g 124 Street, Lagos.") }}</p>
 
         <label>City</label>
-        <input type="text" placeholder="Storecity" name="storecity" value="{{ request.form.storecity }}">
+        <p>{{ form.storecity(placeholder="e.g Ikeja") }}</p>
 
         <label>State</label>
-        <input type="text" placeholder="Storestate" name="storestate" value="{{ request.form.storestate }}">
+        <p>{{ form.storestate(placeholder="e.g Lagos.") }}</p>
 
         <input class="btn btn-default" type="submit" value="Submit">
       </form>

@@ -2,10 +2,10 @@ import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
-from config import basedir
+from config import config
 
 app = Flask(__name__)
-app.config.from_object('config.DevelopmentConfig')
+app.config.from_object(config['development'])
 db = SQLAlchemy(app)
 
 

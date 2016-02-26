@@ -1,34 +1,63 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="container">
+    <div class="main-wrapper text-center">
+      <p class="logo"> <i class="fa fa-shopping-bag"></i> </p>
       <h1>Setup your new Store</h1>
-      <br>
-      <form action="/create_store" method ="post"> 
+      
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <form action="/create_store" method ="post"> 
         {{ form.csrf_token }}
-        <label>Store Name</label>
-        <p>{{ form.storename(placeholder="e.g Hope Ventures", id="id_store_name") }}</p>
+        <div class="row">
+          <div class="col-sm-6">
+             <div class="form-group">
+              <label>Store Name</label>
+              {{ form.storename(placeholder="e.g Hope Ventures", id="id_store_name", class="form-control") }}
+            </div>
+          </div>
 
-        <label>Store URL</label>
-        <p>{{ form.storeurl(placeholder="", id="id_store_url") }}</p>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Store URL</label>
+              {{ form.storeurl(placeholder="hope", id="id_store_url", class="form-control") }}
+            </div>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label>Store Description</label>
+          {{ form.storedescription(placeholder="e.g We sell luxury clothes.", class="form-control") }}
+        </div>
 
-        <label>Store Description</label>
-        <p>{{ form.storedescription(placeholder="e.g We sell luxury clothes.") }}</p>
+        <div class="form-group">
+          <label>Email to notify when order placed</label>
+          <input name="email" class="form-control" value="{{ email }}" type="text">
+        </div>
 
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>Address</label>
+              {{ form.storeaddress(placeholder="e.g 124 Street, Lagos.", class="form-control") }}
+            </div>
+          </div>
 
-        <label>Email to notify when order placed</label>
-        <p><input name="email" value="{{ email }}" type="text"></p>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>City</label>
+              {{ form.storecity(placeholder="e.g Ikeja", class="form-control") }}
+            </div>
+          </div>
 
-        <label>Address</label>
-        <p>{{ form.storeaddress(placeholder="e.g 124 Street, Lagos.") }}</p>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>State</label>
+              {{ form.storestate(placeholder="e.g Lagos.", class="form-control") }}
+            </div>
+          </div>
+        </div>
 
-        <label>City</label>
-        <p>{{ form.storecity(placeholder="e.g Ikeja") }}</p>
-
-        <label>State</label>
-        <p>{{ form.storestate(placeholder="e.g Lagos.") }}</p>
-
-        <input class="btn btn-default" type="submit" value="Submit">
+        <button class="btn btn-lg" type="submit">Submit <i class="fa fa-send"></i></button>
       </form>
       {% if form.errors %}
           {% for error in form.errors %}
@@ -38,8 +67,11 @@
       {% for message in get_flashed_messages() %}
          {{ message }}
       {% endfor %} 
-      <p>Click <a href="/logout">here</a> to logout.</p>             
-    </div>
+        <p class="logout-msg">Click <a href="/logout">here</a> to logout.</p>
+        </div>
+      </div>
+    </div>             
+    
 {% endblock %}
 
 {% block js %}

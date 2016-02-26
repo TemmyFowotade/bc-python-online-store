@@ -40,7 +40,6 @@ class Store(db.Model):
     storecity = db.Column(db.String(64), index=True, nullable=False)
     storestate = db.Column(db.String(64), index=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    # user = db.relationship('User')
     product = db.relationship('Product', backref='store', lazy='dynamic', cascade="all, delete-orphan")
 
     def __repr__(self):

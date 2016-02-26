@@ -1,6 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<p>Click <a href="/login">here</a> to Log In</p>
-<p>Click <a href="/signup">here</a> to Sign Up</p>
+<div class="main-wrapper text-center">
+  <a href="/index" class="logo"> <i class="fa fa-shopping-bag"></i> </a>
+
+<div class="hero-section">
+  <h1 class="app-name">Shoppy</h1>
+  <p>The easiest way to get up and running with your very own e-commerce store!</p>
+</div>
+
+  <a href="/signup" class="btn btn-lg">Sign up <i class="fa fa-user-plus"></i></a>
+  <a href="/login" class="btn btn-lg">Log in <i class="fa fa-sign-in"></i></a>
+</div>
+
 {% endblock %}

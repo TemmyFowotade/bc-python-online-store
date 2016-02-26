@@ -1,0 +1,97 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-image: linear-gradient(to right, rgba(0,0,0,.6) 50%, rgba(0,0,0,.6) 50%), url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #D87E0C;
+  background-blend-mode: multiply;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Helpers */
+
+p.error {
+  position: absolute;
+  top: 3%;
+  left: 41%;
+  background-color: #f2dede;
+  color: #a94442;
+  padding: 14px;
+  border: 1px solid #f2dede
+}
+
+.logout-msg {
+  margin-top: 10px;
+}
+
+/* Index page */
+
+.main-wrapper {
+  color: #f5f5f5;
+  padding-top: 80px;
+}
+
+.main-wrapper .logo {
+  color: #fff;
+  font-size: 60px;
+}
+
+.main-wrapper .hero-section {
+  margin-bottom: 35px;
+}
+
+.main-wrapper .app-name {
+  font-family: "Pacifico", sans-serif;
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+
+.main-wrapper .btn {
+  background-color: #D87E0C;
+  border: 0;
+  border-radius: 25px;
+  color: #fff;
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.main-wrapper .btn .fa {
+  padding-left: 10px;
+}
+
+/* Forms */
+
+.jinja-form {
+  margin-top: 12px;
+}
+
+.jinja-form .form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  text-align: left;
+}
+
+.jinja-form .form-group .fa {
+  color: #333;
+  position: absolute;
+  left: 3%;
+  top: 10px;
+}
+
+.jinja-form .form-group input {
+  text-indent: 35px;
+}
+
+.jinja-form .btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

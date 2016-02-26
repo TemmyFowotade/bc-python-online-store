@@ -1,13 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="container">
-  <h1>login</h1>
-  <br>
-  <form action="" method="post"> 
+<div class="main-wrapper text-center">
+  <a href="/index" class="logo"> <i class="fa fa-shopping-bag"></i> </a>
+    <h1>Login to your account</h1>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <form action="" method="post" class="jinja-form"> 
       {{ form.csrf_token }}
-    <p>
-      {{ form.email(placeholder="email") }}
+    <div class="form-group">
+      <i class="fa fa-envelope"></i>
+      {{ form.email(placeholder="email", class="form-control") }}
       <span class="error">
         {% if form.email.errors %}
           {% for error in form.email.errors %}
@@ -15,9 +18,10 @@
           {% endfor %}
         {% endif %}
       </span>
-    </p>
-    <p>
-    {{ form.password(placeholder="password") }}
+    </div>
+    <div class="form-group">
+      <i class="fa fa-lock"></i>
+    {{ form.password(placeholder="password", class="form-control") }}
       <span class="error">
         {% if form.password.errors %}
           {% for error in form.password.errors %}
@@ -25,9 +29,13 @@
           {% endfor %}
         {% endif %}
       </span>
-    </p>
-    <button class="btn btn-sm btn-success" type="submit">Sign in</button>
-</form>            
-</div>
+    </div>
+    <button class="btn btn-lg" type="submit">Sign in <i class="fa fa-unlock-alt"></i></button>
+    <p>Don't have an account? <a href="/signup">register</a></p>
+</form> 
+    </div>
+  </div>
+</div>           
+
 {% endblock %}
   

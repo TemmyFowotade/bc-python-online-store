@@ -1,13 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
-<h1>Please Register</h1>
-<br>
-<form class="form-signin" role="form" method="post" action="">
+<div class="main-wrapper text-center">
+  <a href="/index" class="logo"> <i class="fa fa-shopping-bag"></i> </a>
+  <h1>Create your account</h1>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <form class="form-signin jinja-form" role="form" method="post" action="">
   {{ form.csrf_token }}
-  <p>
-    {{ form.username(placeholder="username") }}
+  <div class="form-group">
+    <i class="fa fa-user"></i>
+    {{ form.username(placeholder="username", class="form-control") }}
     <span class="error">
       {% if form.username.errors %}
         {% for error in form.username.errors %}
@@ -15,9 +18,10 @@
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <p>
-  {{ form.email(placeholder="email") }}
+  </div>
+  <div class="form-group">
+    <i class="fa fa-envelope"></i>
+  {{ form.email(placeholder="email", class="form-control") }}
     <span class="error">
       {% if form.email.errors %}
         {% for error in form.email.errors %}
@@ -25,9 +29,10 @@
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <p>
-  {{ form.password(placeholder="password") }}
+  </div>
+  <div class="form-group">
+    <i class="fa fa-lock"></i>
+  {{ form.password(placeholder="password", class="form-control") }}
     <span class="error">
       {% if form.password.errors %}
         {% for error in form.password.errors %}
@@ -35,9 +40,10 @@
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <p>
-  {{ form.confirm(placeholder="confirm") }}
+  </div>
+  <div class="form-group">
+    <i class="fa fa-lock"></i>
+  {{ form.confirm(placeholder="confirm password", class="form-control") }}
     <span class="error">
       {% if form.confirm.errors %}
         {% for error in form.confirm.errors %}
@@ -45,8 +51,13 @@
         {% endfor %}
       {% endif %}
     </span>
-  </p>
-  <button class="btn btn-sm btn-success" type="submit">Register!</button>
+  </div>
+  <button class="btn btn-lg" type="submit">Register <i class="fa fa-key"></i></button>
+
+  <p>Already have an account? <a href="/login">login</a></p>
 </form>
+  </div>
+</div>
+</div>
 
 {% endblock %}

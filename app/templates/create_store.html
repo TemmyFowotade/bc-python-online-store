@@ -3,20 +3,21 @@
     <div class="container">
       <h1>Setup your new Store</h1>
       <br>
-      <form action ="/signup" method = "post"> 
+      <form action="/create_store" method ="post"> 
+        {{ form.csrf_token }}
         <label>Store Name</label>
-        <p>{{ form.storename(placeholder="e.g Hope Ventures") }}</p>
+        <p>{{ form.storename(placeholder="e.g Hope Ventures", id="id_store_name") }}</p>
 
         <label>Store URL</label>
-        <p>{{ form.storeurl(placeholder="") }}</p>
+        <p>{{ form.storeurl(placeholder="", id="id_store_url") }}</p>
 
 
         <label>Store Description</label>
-        <p>{{ form.description(placeholder="e.g We sell luxury clothes.") }}</p>
+        <p>{{ form.storedescription(placeholder="e.g We sell luxury clothes.") }}</p>
 
 
         <label>Email to notify when order placed</label>
-        <p>{{ form.description(placeholder="email.") }}</p>
+        <p><input name="email" value="{{ email }}" type="text"></p>
 
         <label>Address</label>
         <p>{{ form.storeaddress(placeholder="e.g 124 Street, Lagos.") }}</p>
@@ -29,12 +30,22 @@
 
         <input class="btn btn-default" type="submit" value="Submit">
       </form>
-      {% if error %}
-        <p class="error"><strong>Error</strong> {{ error }}</p>
+      {% if form.errors %}
+          {% for error in form.errors %}
+            {{ error }}
+          {% endfor %}
       {% endif %}
       {% for message in get_flashed_messages() %}
          {{ message }}
       {% endfor %} 
       <p>Click <a href="/logout">here</a> to logout.</p>             
     </div>
+{% endblock %}
+
+{% block js %}
+
+  <script type="text/javascript" src="/static/js/jquery.slugify.js"></script>
+
+  <script type="text/javascript" src="/static/js/app.js"></script>
+
 {% endblock %}

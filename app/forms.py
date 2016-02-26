@@ -1,6 +1,8 @@
 from flask_wtf import Form
-from wtforms import TextField, PasswordField, BooleanField, IntegerField
+from wtforms import TextField, PasswordField, BooleanField, IntegerField, DecimalField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+from flask import session
+
 
 class LoginForm(Form):
     email = TextField('Email', validators=[DataRequired()])
@@ -37,11 +39,15 @@ class CreateStoreForm(Form):
     )
     storedescription = TextField(
         'storedescription',
-        validators=[DataRequired(), Length(min=25, max=125)]
+        validators=[DataRequired()]
     )
     storeaddress = TextField(
         'storeaddress',
-        validators=[DataRequired(), Length(min=3, max=25)]
+        validators=[DataRequired(), Length(min=3, max=255)]
+    )
+    email = TextField(
+        'email',
+        validators=[DataRequired(), Email(message=None), Length(min=6, max=40)]
     )
     storecity = TextField(
         'storecity',
@@ -51,6 +57,8 @@ class CreateStoreForm(Form):
         'storestate',
         validators=[DataRequired(), Length(min=3, max=25)]
     )
+
+
 
 class CreateProduct(Form):
     productname = TextField(

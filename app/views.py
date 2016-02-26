@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, session, flash
 from flask.ext.login import login_user, login_required, logout_user
 from app import app, db, lm
 from .models import *
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, CreateStoreForm, CreateProduct
 
 @app.route('/')
 @app.route('/index')
@@ -55,27 +55,36 @@ def logout():
 @app.route('/create_store', methods=['GET', 'POST'])
 @login_required
 def create_store():
+    form = CreateStoreForm()
     if request.method == 'POST':
-        form = CreateProduct()
         if form.validate_on_submit():
             store = Store(
             storename = form.storename.data,
-            storeurl = 
+            storeurl = form.storeurl.data,
             storedescription = form.storedescription.data,
             storeaddress = form.storeaddress.data,
             storecity = form.storecity.data,
             storestate = form.storeaddress.data,
+            user_id = session['user_id']
             )
-
-        return redirect(url_for('dashboard'))
-    return render_template('create_store.html')
+            db.session.add(store)
+            db.session.commit()
+            return redirect(url_for('dashboard'))
+    email = User.query.filter_by(id=session['user_id']).first_or_404().email
+    return render_template('create_store.html', form=form, email=email)
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('dashboard.html')
+    store = Store.query.filter_by(user_id=session['user_id']).first_or_404()
+    return render_template('dashboard.html', store=store)
 
+
+@app.route('/add_product', methods=['GET', 'POST'])
+@login_required
+def add_product():
+    return render_template('add_product.html')
 
 
 if __name__ == '__main__':

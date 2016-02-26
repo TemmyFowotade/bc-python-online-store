@@ -1,3 +1,6 @@
+"""Testing for the application
+"""
+
 import unittest
 from flask.ext.testing import TestCase
 from app import app, db

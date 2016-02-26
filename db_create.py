@@ -1,4 +1,7 @@
 #!flask/bin/python
+"""Sqlalchemy file for creating a database.
+"""
+
 from migrate.versioning import api
 from config import config
 from app import db

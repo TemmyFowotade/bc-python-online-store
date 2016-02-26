@@ -1,4 +1,7 @@
 #!flask/bin/python
+"""Sqlalchemy file for database upgrade.
+"""
+
 from migrate.versioning import api
 from config import config
 v = api.db_version(config['development'].SQLALCHEMY_DATABASE_URI, config['development'].SQLALCHEMY_MIGRATE_REPO)

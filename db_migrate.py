@@ -1,4 +1,7 @@
 #!flask/bin/python
+"""Sqlalchemy file for database migration.
+"""
+
 import imp
 from migrate.versioning import api
 from app import db
